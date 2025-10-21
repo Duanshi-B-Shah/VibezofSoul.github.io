@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystic Insights - Tarot & Numerology</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <!-- EmailJS for form submissions -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- Google Sheets API -->
+    <script src="https://apis.google.com/js/api.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <h1>✨ Vibez of Soul 🔮</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tarot">Tarot Reading</a></li>
+                <li><a href="#numerology">Numerology</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Discover Your Destiny</h2>
+                <p>Unlock the mysteries of your future through ancient wisdom of tarot and numerology</p>
+                <div class="cta-buttons">
+                    <button class="btn primary" onclick="scrollToSection('tarot')">Free Tarot Reading</button>
+                    <button class="btn secondary" onclick="scrollToSection('numerology')">Calculate Life Path</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="mystical-circle">
+                    <div class="rotating-symbols">🌙✨🔮⭐</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tarot Reading Section -->
+        <section id="tarot" class="tarot-section">
+            <div class="container">
+                <h2>Interactive Tarot Reading</h2>
+                <p>Choose your spread and let the cards reveal their wisdom</p>
+
+                <div class="spread-selector">
+                    <button class="spread-btn active" data-spread="three-card">3-Card Reading</button>
+                    <button class="spread-btn" data-spread="single-card">Single Card</button>
+                    <button class="spread-btn" data-spread="celtic-cross">Celtic Cross</button>
+                </div>
+
+                <div class="tarot-area">
+                    <div id="card-deck" class="card-deck">
+                        <div class="deck-pile">
+                            <div class="card-back">🌟</div>
+                            <p class="deck-instruction">Click to draw cards</p>
+                        </div>
+                    </div>
+
+                    <div id="single-card-selection" class="single-card-selection hidden">
+                        <h4>Choose Your Destiny</h4>
+                        <p>Trust your intuition and select the card that calls to your soul</p>
+                        <div class="card-grid" id="card-grid">
+                            <!-- Cards will be populated here -->
+                        </div>
+                    </div>
+
+                    <div id="card-spread" class="card-spread">
+                        <!-- Cards will be dynamically added here -->
+                    </div>
+
+                    <div id="reading-result" class="reading-result hidden">
+                        <h3>Your Reading</h3>
+                        <div id="interpretation"></div>
+                        <button class="btn secondary" onclick="resetReading()">New Reading</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Numerology Section -->
+        <section id="numerology" class="numerology-section">
+            <div class="container">
+                <h2>Numerology Calculator</h2>
+                <p>Discover your life path number and its meaning</p>
+
+                <div class="numerology-calculator">
+                    <div class="input-group">
+                        <label for="birthdate">Enter your birth date:</label>
+                        <input type="date" id="birthdate" class="date-input">
+                        <button class="btn primary" onclick="calculateLifePath()">Calculate</button>
+                    </div>
+
+                    <div id="numerology-result" class="numerology-result hidden">
+                        <div class="life-path-number">
+                            <h3>Your Life Path Number</h3>
+                            <div class="number-display">
+                                <span id="life-path-number"></span>
+                            </div>
+                        </div>
+                        <div class="number-meaning">
+                            <h4>Meaning & Interpretation</h4>
+                            <p id="number-interpretation"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services Section -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2>Professional Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🔮</div>
+                        <h3>Personal Tarot Reading</h3>
+                        <p>In-depth one-on-one tarot consultation to explore your questions and concerns</p>
+                        <div class="price">$75 / 60 min</div>
+                        <button class="btn primary">Book Session</button>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Numerology Analysis</h3>
+                        <div class="service-icon">🔢</div>
+                        <p>Complete numerological profile including life path, destiny, and soul numbers</p>
+                        <div class="price">$50 / 45 min</div>
+                        <button class="btn primary">Book Session</button>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">✨</div>
+                        <h3>Combined Reading</h3>
+                        <p>Comprehensive session combining tarot insights with numerological guidance</p>
+                        <div class="price">$120 / 90 min</div>
+                        <button class="btn primary">Book Session</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Connect With Me</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Ready for Your Reading?</h3>
+                        <p>I'm here to guide you on your spiritual journey. Reach out to schedule a personal
+                            consultation or ask any questions.</p>
+
+                        <div class="contact-methods">
+                            <div class="contact-item">
+                                <span class="icon">📧</span>
+                                <span>kismatkonnection51@gmail.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="icon">📱</span>
+                                <span>(+91) 81290 77776</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="icon">🕐</span>
+                                <span>Available Mon-Fri, 9AM-7PM IST</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="contact-form">
+                        <div class="form-field">
+                            <label for="name">Your Name <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <div class="phone-input-group">
+                                <select id="country-code" name="countryCode" required>
+                                    <option value="+1">🇺🇸 +1</option>
+                                    <option value="+91" selected>🇮🇳 +91</option>
+                                    <option value="+44">🇬🇧 +44</option>
+                                    <option value="+61">🇦🇺 +61</option>
+                                    <option value="+81">🇯🇵 +81</option>
+                                    <option value="+49">🇩🇪 +49</option>
+                                    <option value="+33">🇫🇷 +33</option>
+                                    <option value="+39">🇮🇹 +39</option>
+                                    <option value="+34">🇪🇸 +34</option>
+                                    <option value="+7">🇷🇺 +7</option>
+                                    <option value="+86">🇨🇳 +86</option>
+                                    <option value="+82">🇰🇷 +82</option>
+                                    <option value="+55">🇧🇷 +55</option>
+                                    <option value="+52">🇲🇽 +52</option>
+                                    <option value="+27">🇿🇦 +27</option>
+                                    <option value="+971">🇦🇪 +971</option>
+                                    <option value="+966">🇸🇦 +966</option>
+                                    <option value="+65">🇸🇬 +65</option>
+                                    <option value="+60">🇲🇾 +60</option>
+                                    <option value="+66">🇹🇭 +66</option>
+                                </select>
+                                <input type="tel" id="phone" name="phone" placeholder="Enter 10-digit number"
+                                    maxlength="10" pattern="[0-9]{10}" required>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label for="service">Service Type <span class="required">*</span></label>
+                            <select id="service" name="service" required>
+                                <option value="">Select Service</option>
+                                <option value="tarot">Tarot Reading</option>
+                                <option value="numerology">Numerology Analysis</option>
+                                <option value="combined">Combined Reading</option>
+                                <option value="question">General Consultation</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="message">Your Message <span class="required">*</span></label>
+                            <textarea id="message" name="message"
+                                placeholder="Tell me about what you'd like to explore..." rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Vibez of Soul. All readings may vary as per your queries.</p>
+            <div class="social-links">
+                <span>Follow the journey: </span>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">YouTube</a>
+                <a href="#" id="admin-link" onclick="authenticateAdmin()">Admin Page</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
