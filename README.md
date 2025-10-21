@@ -193,7 +193,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🎉 Live Demo
 
-See the website in action: [Your Live URL Here]
+See the website in action: [[Your Live URL Here](https://duanshi-b-shah.github.io/VibezofSoul.github.io/)]
 
 ---
 
