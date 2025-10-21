@@ -104,7 +104,7 @@ Access the admin panel by clicking "Admin Page" in the footer:
 ## 📁 Project Structure
 
 ```
-Vibez-of-Soul/
+VibezofSoul/
 ├── index.html              # Main website file
 ├── styles.css              # All styling and responsive design
 ├── script.js               # Interactive functionality
